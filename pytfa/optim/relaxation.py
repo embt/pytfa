@@ -69,7 +69,7 @@ def relax_dgo(tmodel, reactions_to_ignore=(), solver=None, in_place = False):
     # Create a copy of the cobra_model on which we will perform the slack addition
     slack_model = deepcopy(tmodel)
     slack_model.solver = solver
-    slack_model.name = 'SlackModel '+tmodel.name
+    slack_model.name = 'SlackModel '+str(tmodel.name)
     slack_model.id = 'SlackModel_'+tmodel.id
 
     # Ensure the lazy updates are all done
@@ -79,7 +79,7 @@ def relax_dgo(tmodel, reactions_to_ignore=(), solver=None, in_place = False):
         # Create a copy that will receive the relaxation
         relaxed_model = deepcopy(tmodel)
         relaxed_model.solver = solver
-        relaxed_model.name = 'RelaxedModel '+tmodel.name
+        relaxed_model.name = 'RelaxedModel '+str(tmodel.name)
         relaxed_model.id = 'RelaxedModel_'+tmodel.id
         relaxed_model.repair()
     else:
